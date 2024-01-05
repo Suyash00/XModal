@@ -1,25 +1,15 @@
-import "./App.css";
-import { useState } from "react";
-
-// function App() {
-//   return <div className="App"></div>;
-// }
-
-// export default App;
+/* eslint-disable react/prop-types */
 
 const User = ({ closeModal }) => {
-  // Function to validate email
   const validateEmail = (email) => {
     const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return re.test(email);
   };
 
-  // Function to validate phone number
   const validatePhone = (phone) => {
     return phone.length === 10 && !isNaN(phone);
   };
 
-  // Function to validate date of birth
   const validateDOB = (dob) => {
     const today = new Date();
     const birthDate = new Date(dob);
@@ -51,12 +41,6 @@ const User = ({ closeModal }) => {
 
     closeModal(true);
   };
-
-  // const handleOutsideClick = (event) => {
-  //   if (event.target.className === "modal") {
-  //     closeModal();
-  //   }
-  // };
 
   const handleOutsideClick = (event) => {
     if (event.target.classList.contains("modal")) {
@@ -120,26 +104,4 @@ const User = ({ closeModal }) => {
   );
 };
 
-const App = () => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  return (
-    <div className="App">
-      <h1>User Details Modal</h1>
-      <button onClick={openModal} className="submit-button">
-        Open Form
-      </button>
-      {isOpen && <User closeModal={closeModal} />}
-    </div>
-  );
-};
-
-export default App;
+export default User;
